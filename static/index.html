@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rey - Decentralized Voting Results</title>
+  </head>
+  <body>
+    <h1>Rey - Decentralized Voting Results</h1>
+    <p>Welcome to Rey, the decentralized voting results platform. Here you can view the latest voting results from our community.</p>
+    <h2>Latest Results</h2>
+    <ul>
+      <li><a href="results/2022-01-01.pdf">January 1, 2022</a></li>
+      <li><a href="results/2022-02-01.pdf">February 1, 2022</a></li>
+      <li><a href="results/2022-03-01.pdf">March 1, 2022</a></li>
+    </ul>
+    <h2>Upload Results</h2>
+    <p>If you have voting results to share, please upload them below:</p>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      <label for="file">Select file:</label>
+      <input type="file" name="file" id="file"><br>
+      <input type="submit" value="Upload">
+    </form>
+  </body>
+</html>

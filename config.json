@@ -1,0 +1,60 @@
+{
+    "name": "Baskanlik Secimleri",
+    "elections": [
+        {
+            "name": "Cumhurbaskanligi",
+            "candidates": [
+                {
+                    "name": "Recep Tayyip Erdogan",
+                    "party": "AKP",
+                    "votes": 0
+                },
+                {
+                    "name": "Kemal Kilicdaroglu",
+                    "party": "CHP",
+                    "votes": 0
+                },
+                {
+                    "name": "Sinan Ogan",
+                    "party": "ATA",
+                    "votes": 0
+                },
+                {
+                    "name": "Muarram Ince",
+                    "party": "ABC",
+                    "votes": 0
+                }
+            ]
+        },
+        {
+            "name": "Genel Secimler",
+            "candidates": [
+                {
+                    "name": "AKP",
+                    "party": "AKP",
+                    "votes": 0
+                },
+                {
+                    "name": "CHP",
+                    "party": "CHP",
+                    "votes": 0
+                },
+                {
+                    "name": "ATA",
+                    "party": "ATA",
+                    "votes": 0
+                },
+                {
+                    "name": "MHP",
+                    "party": "MHP",
+                    "votes": 0
+                },
+                {
+                    "name": "YSP",
+                    "party": "YSP",
+                    "votes": 0
+                }
+            ]
+        }
+    ]
+}

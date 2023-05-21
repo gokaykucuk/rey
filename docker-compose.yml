@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # minio:
+  #   image: minio/minio
+  #   volumes:
+  #     - ./minio_data:/data
+  #   ports:
+  #     - "9000:9000"
+  #     - "9001:9001"
+  #   environment:
+  #     MINIO_ACCESS_KEY: minio
+  #     MINIO_SECRET_KEY: minio123
+  #   command: server --console-address ":9001" /data
+  #   networks:
+  #     - app-network
+
+  dragonfly:
+    image: 'docker.dragonflydb.io/dragonflydb/dragonfly'
+    ulimits:
+      memlock: -1
+    volumes:
+      - ./dragonfly_data:/data
+
+  # nginx:
+  #   image: nginx
+  #   ports:
+  #     - "8081:80"
+  #   volumes:
+  #     - ./static:/usr/share/nginx/html
+  #   networks:
+  #     - app-network
+
+  web:
+    build: rey-salvo
+    ports:
+      - "5800:5800"
+    environment:
+      - MINIO_ACCESS_KEY=minio
+      - MINIO_SECRET_KEY=minio123
+      - MINIO_HOST=minio
+      - MINIO_PORT=9000
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - dragonfly
+    # ulimits:
+    #   nofile:
+    #     soft: 6553600
+    #     hard: 65536000
+    networks:
+      - app-network
+
+networks:
+  app-network:
