@@ -1,36 +1,6 @@
 version: '3.8'
 
 services:
-  # minio:
-  #   image: minio/minio
-  #   volumes:
-  #     - ./minio_data:/data
-  #   ports:
-  #     - "9000:9000"
-  #     - "9001:9001"
-  #   environment:
-  #     MINIO_ACCESS_KEY: minio
-  #     MINIO_SECRET_KEY: minio123
-  #   command: server --console-address ":9001" /data
-  #   networks:
-  #     - app-network
-
-  dragonfly:
-    image: 'docker.dragonflydb.io/dragonflydb/dragonfly'
-    ulimits:
-      memlock: -1
-    volumes:
-      - ./dragonfly_data:/data
-
-  # nginx:
-  #   image: nginx
-  #   ports:
-  #     - "8081:80"
-  #   volumes:
-  #     - ./static:/usr/share/nginx/html
-  #   networks:
-  #     - app-network
-
   web:
     build: rey-salvo
     ports:
@@ -43,13 +13,37 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
-      - dragonfly
+      - kafka
     # ulimits:
     #   nofile:
     #     soft: 6553600
     #     hard: 65536000
     networks:
       - app-network
+
+  kafka:
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_CREATE_TOPICS: "test:1:1"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - app-network
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - app-network
+
 
 networks:
   app-network:

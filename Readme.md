@@ -2,12 +2,16 @@
 
 Rey, oy sayim islemlerinin merkeziyetsiz sekilde, hizlica ve seffafca sayilabilmesi icin yayinlanmis bir projedir.
 
-# En Hizli Web Server
+### En Hizli Web Server
 
 https://web-frameworks-benchmark.netlify.app/result
 
 - https://actix.rs/
 - salvo
+
+### En dusuk memory kullanimi
+
+https://pkolaczk.github.io/memory-consumption-of-async/
 
 # Mimari
 
