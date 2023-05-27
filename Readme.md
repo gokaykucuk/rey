@@ -60,8 +60,32 @@ Bu durumda ortalama 5.5 MB/saniye upload hizi gerekiyor. 5.5*8 = 44 Mbps upload 
 
 
 
-Saniyede 1GBPS up/down internet baglantisi hizi varsayalim suncu
+Saniyede 1GBPS up/down internet baglantisi hizi varsayalim.
 
+## Mimari
+
+Su an icin en buyuk problem bu kadar verinin guvenli bir sekilde diske yazilip nasil indexleneceginden geciyor. Bu problemi 2 ayri adimda cozmek mumkun gibi gorunuyor.
+
+1 - Verilerin diske aninda yazilmasi: Gonderilen veriler, pusula fotografi olsun, pusulanin okunmasi verisi olsun, sadece 2 ayri sekilde indexlenmesi gerekiyor.
+
+- Sayan Kullanciya gore: Oy sayan kullanicinin(kimligi anonim olsa bile), kimlerin hangi sandiklari saydigini bilmek onemli. Buna gore kisilere puan verilebilir ve sayimlarina daha cok guvenilebilir.
+- Sandik numarasina gore. Oncelikle sandik fotograflarinin hepsi "unassigned" isminde bir tagin altinda olacak, ardindan belirli sayida insan ayni veriyi girince, kendi sandik no'sundaki taga tasinacak.
+
+### Tag Sistemi
+
+Kullanilacak ana data yapisi:
+
+`let mut map: HashMap<Vec<String>, String> = HashMap::new();`
+
+Seklinde olacaktir. Burda key olarak kullandigimiz Vec<String> tipi, bir tag listesini temsil ediyor. 
+Ornegin sayana  gore tag listesi:
+
+```
+["sayim","kullanici123123", "u452-dsfsdf-234234-234"]  => Bu sayim islemi yapan kullanici123123 kullanicisinin, u452-dsfsdf-234234-234 sandik numarali islemi yaptigini gosteriyor.
+```
+```
+["sandik","123123","u452-dsfsdf-234234-234"] => Bu sandiklar arasinda 123123 numarali sandiga ait olan "u452-dsfsdf-234234-234" elemanina denk geliyor. Yani iki ayri sekilde sorgulama yapildiginda da ayni elemana ulasilabiliyor.
+```
 # Test
 ## Autotest
 ```

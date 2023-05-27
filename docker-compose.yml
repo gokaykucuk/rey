@@ -2,48 +2,12 @@ version: '3.8'
 
 services:
   web:
-    build: rey-salvo
+    build: rey-server
     ports:
       - "5800:5800"
-    environment:
-      - MINIO_ACCESS_KEY=minio
-      - MINIO_SECRET_KEY=minio123
-      - MINIO_HOST=minio
-      - MINIO_PORT=9000
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-    depends_on:
-      - kafka
-    # ulimits:
-    #   nofile:
-    #     soft: 6553600
-    #     hard: 65536000
     networks:
       - app-network
-
-  kafka:
-    image: wurstmeister/kafka
-    ports:
-      - "9092:9092"
-    environment:
-      KAFKA_ADVERTISED_HOST_NAME: kafka
-      KAFKA_CREATE_TOPICS: "test:1:1"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - app-network
-
-  zookeeper:
-    image: wurstmeister/zookeeper
-    ports:
-      - "2181:2181"
-    environment:
-      ZOOKEEPER_SERVER_ID: 1
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    networks:
-      - app-network
-
-
+      - ./data:/data
 networks:
   app-network:
