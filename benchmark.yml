@@ -1,10 +1,9 @@
 ---
 
-concurrency: 1000
+concurrency: 5000
 base: 'http://127.0.0.1:5800'
-iterations: 1000
-rampup: 10
-
+iterations: 30000
+rampup: 2
 
 plan:
   - name: Fetch root

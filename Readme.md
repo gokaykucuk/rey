@@ -30,11 +30,15 @@ cargo run --release
 
 Rust frameworkleri genellikle en hizliliari ve C++ a gore daha anlamasi kolay oldugu icin rust dilini tercih ettim.
 
-Rust-salvo dokumantasyonu iyi oldugu icin secildi, ama `actix` de bir alternatif hala.
+<s>Rust-salvo dokumantasyonu iyi oldugu icin secildi, ama `actix` de bir alternatif hala.</s>
+https://github.com/programatik29/rust-web-benchmarks/blob/master/result/hello-world.md
+Buraya gore actix-web daha hizli. On edenle actix-web uzerinden devam ediyorum.
 
-Dragonfy db olarak secildi, cunku rust-salvo ile kullanilabilir ve hizli.
+<s>Dragonfy db olarak secildi, cunku rust-salvo ile kullanilabilir ve hizli.</s>
+Database kullanmamaya karar verdim, bunun butun verinin dogrudan dosyaya yazilmasini daha mantikli buluyorum.
 
-Farkettigim ilk bulgu, nginx sunucusunun, compile edilmis rust-salvo suncuusundan cok daha yavas oldugu. Bu durumda sistemi dogrudan onune bir proxy koymadan sunmak daha mantikli.
+Database kullanmayip 
+Farkettigim ilk bulgu, nginx sunucusunun, compile edilmis rust suncuusundan cok daha yavas oldugu. Bu durumda sistemi dogrudan onune bir proxy koymadan sunmak daha mantikli.
 
 Docker icerisinden calisirsa yaklasik 4-5 kat daha yavas calisiyor sistem, docker icindeki network ayarlarini degistirerek bu durumu duzeltmek gerekiyor.
 
@@ -56,7 +60,7 @@ Yaklasik 2TB, hatta fotograflar 1MB den buyuk olabilecegi icin belki daha fazla 
 
 2 TB/6 saat = 5.5 MB/saniye
 
-Bu durumda ortalama 5.5 MB/saniye upload hizi gerekiyor. 5.5*8 = 44 Mbps upload hizi gerekiyor. Bu benim su an aldigim internet hizinin sinirlari icerisinde(50mbit/s). Bunu da sart olmasa da test etmenin bir yolunu bulmak gerekiyor.
+Bu durumda ortalama 5.5 MB/saniye, 5.5*8 = 44 Mbps upload hizi gerekiyor. Bu benim su an aldigim internet hizinin sinirlari icerisinde(50mbit/s). Bunu da sart olmasa da test etmenin bir yolunu bulmak gerekiyor.
 
 
 
