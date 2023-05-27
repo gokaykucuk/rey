@@ -75,6 +75,10 @@ Su an icin en buyuk problem bu kadar verinin guvenli bir sekilde diske yazilip n
 - Sayan Kullanciya gore: Oy sayan kullanicinin(kimligi anonim olsa bile), kimlerin hangi sandiklari saydigini bilmek onemli. Buna gore kisilere puan verilebilir ve sayimlarina daha cok guvenilebilir.
 - Sandik numarasina gore. Oncelikle sandik fotograflarinin hepsi "unassigned" isminde bir tagin altinda olacak, ardindan belirli sayida insan ayni veriyi girince, kendi sandik no'sundaki taga tasinacak.
 
+### Veri Depolama
+
+Yukarida anlatilan mimaride veri depolamak icin [sled](https://docs.rs/sled/latest/sled/index.html#) kullanilacak.
+
 ### Tag Sistemi
 
 Kullanilacak ana data yapisi:
